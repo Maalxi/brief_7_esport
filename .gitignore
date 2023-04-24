@@ -1,0 +1,9 @@
+node_modules
+dist
+.cache
+.parcel-cache
+.buildt
+.vscode
+
+# Clé API ou autre
+hide
