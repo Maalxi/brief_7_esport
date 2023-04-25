@@ -9,6 +9,7 @@
 </head>
 <body>
   <?php 
+  echo('hello')
   ?>
   <script src="./assets/js/script.js"></script>
 </body>
