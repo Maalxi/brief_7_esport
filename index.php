@@ -1,3 +1,10 @@
+<?php 
+require_once('./assets/php/ManagerTeams.php');
+
+$managerTeam = new ManagerTeams();
+$allTeams = $managerTeam->getAllTeams();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +18,12 @@
   <?php 
   include ("./assets/nav-bar/nav_bar.php")
   ?>
+  <section class="team-container" >
+  <?php 
+  include ("./assets/php/listTeams.php")
+  ?>
+  </section>
+
   <script src="./assets/js/script.js" type="module"></script>
 </body>
 </html>

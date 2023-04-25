@@ -23,6 +23,4 @@ new ResizeObserver(entries => {
         navLinksContainer.style.transition = "none";
     }
 }).observe(document.body)
-
-console.log("test");
 }
