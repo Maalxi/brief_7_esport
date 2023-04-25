@@ -9,7 +9,8 @@
 </head>
 <body>
   <?php 
+  include ("./assets/nav-bar/nav_bar.php")
   ?>
-  <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/script.js" type="module"></script>
 </body>
 </html>
