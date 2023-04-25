@@ -1,19 +1,19 @@
-export function fNavBar(){
-const toggler = document.querySelector(".hamburger");
-const navLinksContainer = document.querySelector(".navlinks-container");
-const toggleNav = e => {
-    // Animation du bouton
-    toggler.classList.toggle("open");
+export function fNavBar() {
+    const toggler = document.querySelector(".hamburger");
+    const navLinksContainer = document.querySelector(".navlinks-container");
+    const toggleNav = e => {
+        // Animation du bouton
+        toggler.classList.toggle("open");
 
-    const ariaToggle =
-        toggler.getAttribute("aria-expanded") === "true" ? "false" : "true";
-    toggler.setAttribute("aria-expanded", ariaToggle);
+        const ariaToggle =
+            toggler.getAttribute("aria-expanded") === "true" ? "false" : "true";
+        toggler.setAttribute("aria-expanded", ariaToggle);
 
-    // Slide de la navigation
-    navLinksContainer.classList.toggle("open");
-};
+        // Slide de la navigation
+        navLinksContainer.classList.toggle("open");
+    };
 
-toggler.addEventListener("click", toggleNav);
+    toggler.addEventListener("click", toggleNav);
 
 
 new ResizeObserver(entries => {
@@ -23,4 +23,11 @@ new ResizeObserver(entries => {
         navLinksContainer.style.transition = "none";
     }
 }).observe(document.body)
+    new ResizeObserver(entries => {
+        if (entries[0].contentRect.width <= 900) {
+            navLinksContainer.style.transition = "transform 0.4s ease-out";
+        } else {
+            navLinksContainer.style.transition = "none";
+        }
+    }).observe(document.body)
 }

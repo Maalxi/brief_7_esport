@@ -1,5 +1,7 @@
 /* import des feuilles de styles*/
 @import url("../nav-bar/style_nav_bar.css");
+@import url("./table.css");
+@import url("./form.css");
 
 *,
 ::before,
@@ -14,4 +16,33 @@
   color: white;
   height: 100vh;
   padding-top: 7%;
+
+
+.game-container {
+  background-color: black;
+  color: white;
+  height: 100vh;
+  padding-top: 7%;
+}
+
+h1{
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+
+.display{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: center; */
+  gap: 2%;
+}
+
+.table-container {
+  width: 60%;
+}
+
+.form-container {
+  width: 30%;
 }
