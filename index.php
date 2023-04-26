@@ -1,3 +1,10 @@
+<?php 
+// require_once('./assets/php/ManagerTeams.php');
+
+// $managerTeam = new ManagerTeams();
+// $allTeams = $managerTeam->getAllTeams();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
