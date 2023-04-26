@@ -1,9 +1,18 @@
 <?php 
 
 class Team {
+    private $id;
     private $name;
     private $description;
-    
+
+    public function getId() { 
+        return $this->id;
+    }
+
+    public function setId($id) { 
+        $this->id = $id;
+    }
+
     public function getName() { 
         return $this->name;
     }
@@ -21,7 +30,7 @@ class Team {
     }
 }
 
-require ('../DBManager.php');
+require_once ('../DBManager.php');
 
 class ManagerTeams extends DBManager {
   public function getAllTeams() {
@@ -31,6 +40,7 @@ class ManagerTeams extends DBManager {
 
     foreach ($res as $team) {
       $newTeam = new Team();
+      $newTeam->setId($team['id']);
       $newTeam->setName($team['name']);
       $newTeam->setDescription($team['description']);
       

@@ -9,7 +9,7 @@ class DBManager
             $this->bdd = new PDO(
                 'mysql:host=localhost;dbname=esport;charset=utf8',
                 'root',
-                '12345678' //MDP
+                'root' //MDP
             );
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
