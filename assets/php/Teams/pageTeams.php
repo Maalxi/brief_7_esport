@@ -1,7 +1,16 @@
 <?php
-// require("./ManagerGames.php");
-// $managerGame = new ManagerGames();
-// $allGames = $managerGame->getAll();
+require("./ManagerTeams.php");
+$managerTeam = new ManagerTeams();
+$allTeams = $managerTeam->getAllTeams();
+
+if (!empty($_POST['name']) && isset($_POST['description'])) {
+  $newTeam = new Team();
+  $newTeam -> setName($_POST['name']);
+  $newTeam -> setDescription($_POST['description']);
+
+  $managerTeam->create($newTeam);
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,16 +29,16 @@
   include("../../nav-bar/nav_bar.php");
   ?>
   <section class="container">
-    <h1>Exemple de titre</h1>
+    <h1>Teams</h1>
     <div class="display">
       <div class="table-container">
         <?php
-        // include("./listGames.php")
+        include("./listTeams.php")
         ?>
       </div>
       <div class="form-container">
         <?php
-        // include("./formGames.php")
+        include("./formTeams.php")
         ?>
       </div>
     </div>

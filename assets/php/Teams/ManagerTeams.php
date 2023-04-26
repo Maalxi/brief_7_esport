@@ -21,7 +21,7 @@ class Team {
     }
 }
 
-require('./assets/php/DBManager.php');
+require ('../DBManager.php');
 
 class ManagerTeams extends DBManager {
   public function getAllTeams() {
@@ -38,6 +38,14 @@ class ManagerTeams extends DBManager {
     }
     return $teams;
   }
+  public function create($team) {
+    $request = 'INSERT INTO team (name, description) VALUE (?,?)';
+    $query = $this->getConnexion()->prepare($request);
+    $query->execute([
+        $team->getName(), $team->getDescription()
+    ]);
+    return true;
+}
 }
 
 ?>

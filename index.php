@@ -1,14 +1,8 @@
-<?php
-require("./assets/php/ManagerGames.php");
-$managerGame = new ManagerGames();
-$allGames = $managerGame->getAll();
-?>
-
 <?php 
-require_once('./assets/php/ManagerTeams.php');
+// require_once('./assets/php/ManagerTeams.php');
 
-$managerTeam = new ManagerTeams();
-$allTeams = $managerTeam->getAllTeams();
+// $managerTeam = new ManagerTeams();
+// $allTeams = $managerTeam->getAllTeams();
 ?>
 
 <!DOCTYPE html>
