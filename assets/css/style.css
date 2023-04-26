@@ -11,7 +11,12 @@
   padding: 0;
 }
 
-
+.team-container {
+  background: black;
+  color: white;
+  height: 100vh;
+  padding-top: 7%;
+}
 
 .container {
   background-color: black;
