@@ -13,10 +13,11 @@
 
 
 
-.game-container {
+.container {
   background-color: black;
   color: white;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   padding-top: 7%;
 }
 
@@ -40,4 +41,19 @@ h1{
 
 .form-container {
   width: 30%;
+}
+
+@media screen and (max-width: 610px) {
+  .display{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    height: auto;
+  }
+
+  .form-container {
+    margin-top: 2%;
+  }
 }
