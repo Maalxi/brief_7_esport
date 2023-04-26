@@ -2,9 +2,18 @@
 
 class Game
 {
+    private $id;
     private $name;
     private $station;
     private $format;
+
+    public function getId() { 
+        return $this->id;
+    }
+
+    public function setId($id) { 
+        $this->id = $id;
+    }
     public function getName()
     {
         return $this->name;
@@ -37,7 +46,7 @@ class Game
 
 }
 
-require ('../DBManager.php');
+require_once ('../DBManager.php');
 class ManagerGames extends DBManager
 {
     public function getAll()
@@ -47,6 +56,7 @@ class ManagerGames extends DBManager
 
         foreach ($res as $game) {
             $newGame = new Game;
+            $newGame->setId($game['id']);
             $newGame->setName($game['name']);
             $newGame->setStation($game['station']);
             $newGame->setFormat($game['format']);
@@ -66,6 +76,4 @@ class ManagerGames extends DBManager
         return true;
     }
 }
-
-
 ?>

@@ -1,7 +1,27 @@
 <?php
-// require("./ManagerGames.php");
-// $managerGame = new ManagerGames();
-// $allGames = $managerGame->getAll();
+require("../Teams/ManagerTeams.php");
+require("../Games/ManagerGames.php");
+require("./ManagerPlayers.php");
+$managerPlayer = new ManagerPlayers();
+$allPlayers = $managerPlayer->getAll();
+
+$managerTeam = new ManagerTeams();
+$allTeams = $managerTeam->getAllTeams();
+
+$managerGame = new ManagerGames();
+$allGames = $managerGame->getAll();
+
+if (!empty($_POST['first_name']) && isset($_POST['second_name']) && isset($_POST['city']) && isset($_POST['team_id']) && isset($_POST['game_id'])) {
+  $newPlayer = new Player();
+  $newPlayer -> setFirstName($_POST['first_name']);
+  $newPlayer -> setSecondName($_POST['second_name']);
+  $newPlayer -> setCity($_POST['city']);
+  $newPlayer -> setTeamId(intval($_POST['team_id']));
+  $newPlayer -> setGameId(intval($_POST['game_id']));
+
+  $managerPlayer->create($newPlayer);
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,16 +40,16 @@
   include("../../nav-bar/nav_bar.php");
   ?>
   <section class="container">
-    <h1>Exemple de titre</h1>
+    <h1>Liste des joueurs</h1>
     <div class="display">
       <div class="table-container">
         <?php
-        // include("./listGames.php")
+         include("./listPlayers.php")
         ?>
       </div>
       <div class="form-container">
         <?php
-        // include("./formGames.php")
+         include("./formPlayers.php")
         ?>
       </div>
     </div>
