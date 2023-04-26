@@ -37,7 +37,7 @@ class Game
 
 }
 
-require ('./assets/php/DBManager.php');
+require ('../DBManager.php');
 class ManagerGames extends DBManager
 {
     public function getAll()
@@ -55,6 +55,15 @@ class ManagerGames extends DBManager
 
         }
         return $games; 
+    }
+
+    public function create($game) {
+        $request = 'INSERT INTO game (name, station,format) VALUE (?,?,?)';
+        $query = $this->getConnexion()->prepare($request);
+        $query->execute([
+            $game->getName(), $game->getStation(), $game->getFormat()
+        ]);
+        return true;
     }
 }
 

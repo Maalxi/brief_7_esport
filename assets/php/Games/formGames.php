@@ -1,4 +1,4 @@
-<form action='' method="POST">
+<form action='./pageGames.php' method="POST">
     <div class="input-container" >
         <label for="name">Nom</label>
         <input type="text" name="name" id="name">
