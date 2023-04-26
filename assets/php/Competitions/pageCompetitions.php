@@ -1,7 +1,19 @@
 <?php
-// require("./ManagerGames.php");
-// $managerGame = new ManagerGames();
-// $allGames = $managerGame->getAll();
+require("./ManagerCompetitions.php");
+$managerCompetition = new ManagerCompetitions();
+$allCompetitions = $managerCompetition->getAllCompetitions();
+
+if (!empty($_POST['name']) && isset($_POST['description']) && isset($_POST['city']) && isset($_POST['format']) && isset($_POST['cash_prize'])) {
+  $newCompetition = new Competition();
+  $newCompetition -> setName($_POST['name']);
+  $newCompetition -> setDescription($_POST['description']);
+  $newCompetition -> setCity($_POST['city']);
+  $newCompetition -> setFormat($_POST['format']);
+  $newCompetition -> setCash_prize($_POST['cash_prize']);
+
+  $managerCompetition->create($newCompetition);
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,16 +32,16 @@
   include("../../nav-bar/nav_bar.php");
   ?>
   <section class="container">
-    <h1>Exemple de titre</h1>
+    <h1>Compétitions</h1>
     <div class="display">
       <div class="table-container">
         <?php
-        // include("./listGames.php")
+        include("./listCompetitions.php")
         ?>
       </div>
       <div class="form-container">
         <?php
-        // include("./formGames.php")
+        include("./formCompetitions.php")
         ?>
       </div>
     </div>

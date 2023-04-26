@@ -68,7 +68,7 @@ class ManagerGames extends DBManager
     }
 
     public function create($game) {
-        $request = 'INSERT INTO game (first_name, second_name,city) VALUE (?,?,?)';
+        $request = 'INSERT INTO game (name, station, format) VALUE (?,?,?)';
         $query = $this->getConnexion()->prepare($request);
         $query->execute([
             $game->getName(), $game->getStation(), $game->getFormat()
@@ -76,6 +76,4 @@ class ManagerGames extends DBManager
         return true;
     }
 }
-
-
 ?>
