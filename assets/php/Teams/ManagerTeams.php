@@ -1,62 +1,99 @@
-<?php 
+<?php
 
-class Team {
+class Team
+{
     private $id;
     private $name;
     private $description;
 
-    public function getId() { 
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function setId($id) { 
+    public function setId($id)
+    {
         $this->id = $id;
     }
 
-    public function getName() { 
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function setName($name) { 
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
-    public function getDescription() { 
+    public function getDescription()
+    {
         return $this->description;
     }
 
-    public function setDescription($description) { 
+    public function setDescription($description)
+    {
         $this->description = $description;
     }
 }
 
-require_once ('../DBManager.php');
+require_once('../DBManager.php');
 
-class ManagerTeams extends DBManager {
-  public function getAllTeams() {
-    $res = $this->getConnexion()->query('SELECT * FROM team');
+class ManagerTeams extends DBManager
+{
+    public function getAllTeams()
+    {
+        $res = $this->getConnexion()->query('SELECT * FROM team');
 
-    $teams = [];
+        $teams = [];
 
-    foreach ($res as $team) {
-      $newTeam = new Team();
-      $newTeam->setId($team['id']);
-      $newTeam->setName($team['name']);
-      $newTeam->setDescription($team['description']);
-      
-      $teams[] = $newTeam;
+        foreach ($res as $team) {
+            $newTeam = new Team();
+            $newTeam->setId($team['id']);
+            $newTeam->setName($team['name']);
+            $newTeam->setDescription($team['description']);
+
+            $teams[] = $newTeam;
+        }
+        return $teams;
     }
-    return $teams;
-  }
-  public function create($team) {
-    $request = 'INSERT INTO team (name, description) VALUE (?,?)';
-    $query = $this->getConnexion()->prepare($request);
-    $query->execute([
-        $team->getName(), $team->getDescription()
-    ]);
-    header('Location:pageTeams.php');
-    return true;
-}
-}
+    public function findById($teamid)
+    {
+        $request = 'SELECT * FROM team where id =' . $teamid;
+        $query = $this->getConnexion()->query($request);
+        $foundTeam = $query->fetch();
 
-?>
+        if ($foundTeam) {
+            $team = new Team();
+            $team->setName($foundTeam['name']);
+            $team->setId($foundTeam['id']);
+
+            return $team;
+        } else {
+            return null;
+        }
+    }
+    public function create($team)
+    {
+        $request = 'INSERT INTO team (name, description) VALUE (?,?)';
+        $query = $this->getConnexion()->prepare($request);
+        $query->execute([
+            $team->getName(), $team->getDescription()
+        ]);
+        header('Location:pageTeams.php');
+        return true;
+    }
+    public function delete($teamid)
+    {
+        $teamToDelete = $this->findById($teamid);
+
+        if ($teamToDelete) {
+            $request = 'DELETE FROM team WHERE id =' . $teamid;
+            $query = $this->getConnexion()->prepare($request);
+            $query->execute();
+
+            header('Location: pageTeams.php');
+            exit();
+        }
+    }
+}
