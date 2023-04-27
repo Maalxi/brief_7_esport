@@ -100,7 +100,12 @@ INSERT INTO `sponsor` (`name`, `team_id`) VALUES
 ('HyperX', 2);
 
 INSERT INTO `team_competition` (`team_id`, `competiton_id`) VALUES
-(1, 1);
+(1, 1),
+(2, 1),
+(3, 1),
+(1, 2),
+(2, 2),
+(3, 2);
 
 
 COMMIT;
