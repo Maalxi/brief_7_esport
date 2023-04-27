@@ -110,10 +110,10 @@ class ManagerPlayers extends DBManager
         $request = 'INSERT INTO player (first_name,second_name,city,team_id,game_id) VALUE (?,?,?,?,?)';
         $query = $this->getConnexion()->prepare($request);
         $query->execute([
-            $player->getFirstName(), $player->getSecondName(), $player->getCity(),$player-> (),$player->getGameId()
+            $player->getFirstName(), $player->getSecondName(), $player->getCity(),$player->getTeamId(),$player->getGameId()
         ]);
+        header('Location:pagePlayers.php');
         return true;
-        // var_dump($player);
     }
 }
 
