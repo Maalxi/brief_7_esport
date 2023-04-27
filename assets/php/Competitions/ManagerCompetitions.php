@@ -1,12 +1,20 @@
 <?php 
 
 class Competition {
+    private $id;
     private $name;
     private $description;
     private $city;
     private $format;
     private $cash_prize;
     
+    public function getId() { 
+        return $this->id;
+    }
+    
+    public function setId($id) { 
+        $this->id = $id;
+    }
     public function getName() { 
         return $this->name;
     }
@@ -45,7 +53,7 @@ class Competition {
     }
 }
 
-require ('../DBManager.php');
+require_once ('../DBManager.php');
 
 class ManagerCompetitions extends DBManager {
   public function getAllCompetitions() {
@@ -60,6 +68,8 @@ class ManagerCompetitions extends DBManager {
       $newCompetition->setCity($competition['city']);
       $newCompetition->setFormat($competition['format']);
       $newCompetition->setCash_prize($competition['cash_prize']);
+      $newCompetition->setId($competition['id']);
+
       
       $competitions[] = $newCompetition;
     }
