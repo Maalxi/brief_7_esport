@@ -1,23 +1,23 @@
 <?php
 require("../Teams/ManagerTeams.php");
-require("./ManagerSponsors.php");
+require("../Competitions/ManagerCompetitions.php");
+require("./ManagerInscriptions.php");
 
-$ManagerSponsor = new ManagerSponsors();
-$allSponsors = $ManagerSponsor->getAllSponsors();
+$managerInscription = new ManagerInscriptions();
+$allInscriptions= $managerInscription->getAllInscriptions();
 
 $managerTeam = new ManagerTeams();
 $allTeams = $managerTeam->getAllTeams();
 
-if (isset($_GET['delete'])) {
-  $ManagerSponsor->delete($_GET['delete']);
-}
+$managerCompetition = new ManagerCompetitions();
+$allCompetitions = $managerCompetition->getAllCompetitions();
 
-if (!empty($_POST['name']) && isset($_POST['team_id'])) {
-  $newSponsor = new sponsor();
-  $newSponsor->setName($_POST['name']);
-  $newSponsor->setTeamId(intval($_POST['team_id']));
+if (!empty($_POST['team_id']) && isset($_POST['competition_id'])) {
+  $newInscription = new Inscriptions();
+  $newInscription->setTeamId(intval($_POST['team_id']));
+  $newInscription->setCompetitionId(intval($_POST['competition_id']));
 
-  $ManagerSponsor->create($newSponsor);
+  $managerInscription->create($newInscription);
 }
 ?>
 
@@ -37,16 +37,16 @@ if (!empty($_POST['name']) && isset($_POST['team_id'])) {
   include("../../nav-bar/nav_bar.php");
   ?>
   <section class="container">
-    <h1>Sponsor</h1>
+    <h1>Inscriptions</h1>
     <div class="display">
       <div class="table-container">
         <?php
-        include("./listSponsors.php")
+        include("./listInscriptions.php")
         ?>
       </div>
       <div class="form-container">
         <?php
-        include("./formSponsors.php")
+        include("./formInscriptions.php")
         ?>
       </div>
     </div>

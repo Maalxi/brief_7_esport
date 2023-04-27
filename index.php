@@ -15,7 +15,7 @@
   <a href="./assets/php/Teams/pageTeams.php">TEAMS</a>
   <a href="./assets/php/Players/pagePlayers.php">PLAYERS</a>
   <a href="./assets/php/Competitions/pageCompetitions.php">COMPETES</a>
-  <a href="#">INSCRIPTION</a>
+  <a href="./assets/php/Inscriptions/pageInscriptions.php">Inscriptions</a>
 </body>
 
 </html>
