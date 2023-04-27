@@ -1,11 +1,24 @@
 <?php
-// require("./ManagerGames.php");
-// $managerGame = new ManagerGames();
-// $allGames = $managerGame->getAll();
+require("../Teams/ManagerTeams.php");
+require("./ManagerSponsors.php");
+
+$ManagerSponsor = new ManagerSponsors();
+$allSponsors = $ManagerSponsor->getAllSponsors();
+
+$managerTeam = new ManagerTeams();
+$allTeams = $managerTeam->getAllTeams();
+
+if (!empty($_POST['name']) && isset($_POST['team_id'])) {
+  $newSponsor = new sponsor();
+  $newSponsor->setName($_POST['name']);
+  $newSponsor->setTeamId(intval($_POST['team_id']));
+
+  $ManagerSponsor->create($newSponsor);
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">
@@ -20,20 +33,21 @@
   include("../../nav-bar/nav_bar.php");
   ?>
   <section class="container">
-    <h1>Exemple de titre</h1>
+    <h1>Sponsor</h1>
     <div class="display">
       <div class="table-container">
         <?php
-        // include("./listGames.php")
+        include("./listSponsors.php")
         ?>
       </div>
       <div class="form-container">
         <?php
-        // include("./formGames.php")
+        include("./formSponsors.php")
         ?>
       </div>
     </div>
   </section>
   <script src="../../js/script.js" type="module"></script>
 </body>
+
 </html>

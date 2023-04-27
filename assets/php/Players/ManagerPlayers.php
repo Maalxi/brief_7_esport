@@ -86,7 +86,7 @@ class ManagerPlayers extends DBManager
 {
     public function getAll()
     {
-        $res = $this->getConnexion()->query('SELECT player.first_name, player.second_name, player.city, player.team_id AS tid, player.game_id AS gid, team.name AS tname, game.name AS gname FROM player, team, game WHERE player.game_id = game.id AND player.team_id = team.id ORDER BY player.id;
+        $res = $this->getConnexion()->query('SELECT player.first_name, player.second_name, player.city, player.team_id AS tid, player.game_id AS gid, team.name AS tname, game.name AS gname FROM player, team, game WHERE player.game_id = game.id AND player.team_id = team.id ORDER BY tid;
         ');
         $players = [];
 
@@ -112,8 +112,8 @@ class ManagerPlayers extends DBManager
         $query->execute([
             $player->getFirstName(), $player->getSecondName(), $player->getCity(),$player->getTeamId(),$player->getGameId()
         ]);
+        header('Location:pagePlayers.php');
         return true;
-        // var_dump($player);
     }
 }
 

@@ -54,6 +54,7 @@ class ManagerTeams extends DBManager {
     $query->execute([
         $team->getName(), $team->getDescription()
     ]);
+    header('Location:pageTeams.php');
     return true;
 }
 }

@@ -73,6 +73,7 @@ class ManagerGames extends DBManager
         $query->execute([
             $game->getName(), $game->getStation(), $game->getFormat()
         ]);
+        header('Location:pageGames.php');
         return true;
     }
 }

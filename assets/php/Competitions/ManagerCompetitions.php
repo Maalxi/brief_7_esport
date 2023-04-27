@@ -71,6 +71,7 @@ class ManagerCompetitions extends DBManager {
     $query->execute([
         $competition->getName(), $competition->getDescription(), $competition->getCity(), $competition->getFormat(), $competition->getCash_prize()
     ]);
+    header('Location:pageCompetitions.php');
     return true;
 }
 }
