@@ -8,6 +8,10 @@ $allSponsors = $ManagerSponsor->getAllSponsors();
 $managerTeam = new ManagerTeams();
 $allTeams = $managerTeam->getAllTeams();
 
+if (isset($_GET['delete'])) {
+  $ManagerSponsor->delete($_GET['delete']);
+}
+
 if (!empty($_POST['name']) && isset($_POST['team_id'])) {
   $newSponsor = new sponsor();
   $newSponsor->setName($_POST['name']);
