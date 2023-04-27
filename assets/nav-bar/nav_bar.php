@@ -16,6 +16,7 @@
             <a href="../Games/pageGames.php">Games</a>
             <a href="../Competitions/pageCompetitions.php">Competitions</a>
             <a href="../Sponsors/pageSponsors.php">Sponsors</a>
+            <a href="../Inscriptions/pageInscriptions.php">Inscriptions</a>
         </div>
     </div>
 
