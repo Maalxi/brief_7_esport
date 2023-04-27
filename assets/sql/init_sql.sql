@@ -45,10 +45,10 @@ CREATE TABLE IF NOT EXISTS competition (
 
 CREATE TABLE IF NOT EXISTS team_competition(
     team_id INT(10) NOT NULL,
-    competiton_id INT(10) NOT NULL,
-    PRIMARY KEY (team_id, competiton_id),
+    competition_id INT(10) NOT NULL,
+    PRIMARY KEY (team_id, competition_id),
     CONSTRAINT fk_team_teamcompetition FOREIGN KEY (team_id) REFERENCES team(id),
-    CONSTRAINT fk_competition_teamcompetition FOREIGN KEY (competiton_id) REFERENCES competition(id)
+    CONSTRAINT fk_competition_teamcompetition FOREIGN KEY (competition_id) REFERENCES competition(id)
 );
 
 CREATE TABLE IF NOT EXISTS sponsor(
@@ -99,7 +99,7 @@ INSERT INTO `sponsor` (`name`, `team_id`) VALUES
 ('Logitech G', 3),
 ('HyperX', 2);
 
-INSERT INTO `team_competition` (`team_id`, `competiton_id`) VALUES
+INSERT INTO `team_competition` (`team_id`, `competition_id`) VALUES
 (1, 1),
 (2, 1),
 (3, 1),
