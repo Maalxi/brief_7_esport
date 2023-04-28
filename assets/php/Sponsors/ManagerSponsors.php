@@ -49,7 +49,7 @@ class ManagerSponsors extends DBManager
 {
   public function getAllSponsors()
   {
-    $res = $this->getConnexion()->query('SELECT sponsor.id as sid, sponsor.name AS name, sponsor.team_id AS tid, team.name AS tname FROM sponsor INNER JOIN team ON sponsor.team_id = team.id');
+    $res = $this->getConnexion()->query('SELECT sponsor.id as sid, sponsor.name AS name, sponsor.team_id AS tid, team.name AS tname FROM sponsor INNER JOIN team ON sponsor.team_id = team.id WHERE team.id != 1');
 
     $sponsors = [];
 
@@ -102,5 +102,15 @@ class ManagerSponsors extends DBManager
       header('Location: pageSponsors.php');
       exit();
     }
+  }
+
+  public function edit ($sponsor){
+    $request = 'UPDATE sponsor SET name = ?, team_id = ? WHERE id = ?';
+    $query = $this->getConnexion()->prepare($request);
+    $query->execute([
+      $sponsor->getName(), $sponsor->getTeamId(), $sponsor->getId()
+    ]);
+    header('Location: pageSponsors.php');
+    exit();
   }
 }

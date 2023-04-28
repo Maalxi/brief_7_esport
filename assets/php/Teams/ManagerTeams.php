@@ -34,7 +34,7 @@ require_once ('../DBManager.php');
 
 class ManagerTeams extends DBManager {
   public function getAllTeams() {
-    $res = $this->getConnexion()->query('SELECT * FROM team');
+    $res = $this->getConnexion()->query('SELECT * FROM team WHERE id != 1');
 
     $teams = [];
 
@@ -57,6 +57,13 @@ class ManagerTeams extends DBManager {
     header('Location:pageTeams.php');
     return true;
 }
+public function edit ($team){
+    $request = 'UPDATE team SET name = ?, description = ? WHERE id = ?';
+    $query = $this->getConnexion()->prepare($request);
+    $query->execute([
+      $team->getName(), $team->getDescription(), $team->getId()
+    ]);
+    header('Location: pageTeams.php');
+    exit();
+  }
 }
-
-?>
