@@ -2,6 +2,7 @@
 
 class Player
 {
+    private $id;
     private $first_name;
     private $second_name;
     private $city;
@@ -11,6 +12,15 @@ class Player
     private $gname;
     private $player_id;
  
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
     public function getFirstName()
     {
         return $this->first_name;
@@ -141,6 +151,15 @@ class ManagerPlayers extends DBManager
         header('Location:pagePlayers.php');
         return true;
     }
+    public function edit ($player){
+        $request = 'UPDATE player SET first_name = ?, second_name = ?,city = ?,team_id = ?,game_id = ? WHERE id = ?';
+        $query = $this->getConnexion()->prepare($request);
+        $query->execute([
+          $player->getFirstName(), $player->getSecondName(), $player->getCity(), $player->getTeamId(), $player->getGameId(), $player->getId()
+        ]);
+        header('Location: pagePlayers.php');
+        exit();
+      }
     public function delete($player_id)
     {
         $teamToDelete = $this->findById($player_id);

@@ -25,6 +25,17 @@ if (!empty($_POST['first_name']) && isset($_POST['second_name']) && isset($_POST
   $managerPlayer->create($newPlayer);
 
 }
+if (!empty($_POST['new_id']) && isset($_POST['new_first_name']) && isset($_POST['new_second_name']) && isset($_POST['new_city']) && isset($_POST['new_team_id']) && isset($_POST['new_game_id'])){
+  $upPlayers = new Player();
+  $upPlayers->setId($_POST['new_id']);
+  $upPlayers->setFirstName($_POST['new_first_name']);
+  $upPlayers->setSecondName($_POST['new_second_name']);
+  $upPlayers->setCity($_POST['new_city']);
+  $upPlayers->setTeamId($_POST['new_team_id']);
+  $upPlayers->setGameId($_POST['new_game_id']);
+
+  $managerPlayer->edit($upPlayers);
+}
 ?>
 
 <!DOCTYPE html>

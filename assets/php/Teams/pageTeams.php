@@ -18,6 +18,15 @@ if (!empty($_POST['name']) && isset($_POST['description'])) {
   $managerTeam->create($newTeam);
 
 }
+
+if (!empty($_POST['new_id']) && isset($_POST['new_name']) && isset($_POST['new_description']) ){
+  $upTeam = new Team();
+  $upTeam->setId($_POST['new_id']);
+  $upTeam->setName($_POST['new_name']);
+  $upTeam->setDescription($_POST['new_description']);
+
+  $managerTeam->edit($upTeam);
+}
 ?>
 
 <!DOCTYPE html>

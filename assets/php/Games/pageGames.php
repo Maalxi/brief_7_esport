@@ -17,6 +17,16 @@ if (!empty($_POST['name']) && isset($_POST['station']) && isset($_POST['format']
   $managerGame->create($newGame);
 
 }
+
+if (!empty($_POST['new_id']) && isset($_POST['new_name']) && isset($_POST['new_station']) && isset($_POST['new_format'])){
+  $upGame = new Game();
+  $upGame->setId($_POST['new_id']);
+  $upGame->setName($_POST['new_name']);
+  $upGame->setStation($_POST['new_station']);
+  $upGame->setFormat($_POST['new_format']);
+
+  $managerGame->edit($upGame);
+}
 ?>
 
 <!DOCTYPE html>

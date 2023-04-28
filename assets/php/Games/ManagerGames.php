@@ -91,6 +91,15 @@ class ManagerGames extends DBManager
         header('Location:pageGames.php');
         return true;
     }
+    public function edit ($game){
+        $request = 'UPDATE game SET name = ?, station = ?,format = ? WHERE id = ?';
+        $query = $this->getConnexion()->prepare($request);
+        $query->execute([
+          $game->getName(), $game->getStation(), $game->getFormat(),$game->getId()
+        ]);
+        header('Location: pageGames.php');
+        exit();
+      }
     public function delete($id)
     {
         $teamToDelete = $this->findById($id);
@@ -105,4 +114,3 @@ class ManagerGames extends DBManager
         }
     }
 }
-?>

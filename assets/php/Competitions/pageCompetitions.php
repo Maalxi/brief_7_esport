@@ -19,6 +19,18 @@ if (!empty($_POST['name']) && isset($_POST['description']) && isset($_POST['city
   $managerCompetition->create($newCompetition);
 
 }
+
+if (!empty($_POST['new_id']) && isset($_POST['new_name']) && isset($_POST['new_desc']) && isset($_POST['new_city']) && isset($_POST['new_format']) && isset($_POST['new_cash_prize'])){
+  $upCompetition = new Competition();
+  $upCompetition->setId($_POST['new_id']);
+  $upCompetition->setName($_POST['new_name']);
+  $upCompetition->setDescription($_POST['new_desc']);
+  $upCompetition->setCity($_POST['new_city']);
+  $upCompetition->setFormat($_POST['new_format']);
+  $upCompetition->setCash_prize($_POST['new_cash_prize']);
+
+  $managerCompetition->edit($upCompetition);
+}
 ?>
 
 <!DOCTYPE html>

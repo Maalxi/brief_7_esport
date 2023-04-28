@@ -99,6 +99,16 @@ class ManagerCompetitions extends DBManager {
     header('Location:pageCompetitions.php');
     return true;
 }
+
+public function edit ($competition){
+    $request = 'UPDATE competition SET name = ?, description = ?,city = ?,format = ?,cash_prize = ? WHERE id = ?';
+    $query = $this->getConnexion()->prepare($request);
+    $query->execute([
+      $competition->getName(), $competition->getDescription(), $competition->getCity(), $competition->getFormat(), $competition->getCash_prize(), $competition->getId()
+    ]);
+    header('Location: pageCompetitions.php');
+    exit();
+  }
 public function delete($id)
 {
     $teamToDelete = $this->findById($id);

@@ -53,7 +53,7 @@ class ManagerInscriptions extends DBManager
 {
   public function getAllInscriptions()
   {
-    $res = $this->getConnexion()->query('SELECT c.id AS cid, t.id AS tid, c.name AS cname, t.name AS tname FROM team_competition AS tc INNER JOIN team AS t ON tc.team_id = t.id INNER JOIN competition AS c ON tc.competition_id = c.id;');
+    $res = $this->getConnexion()->query('SELECT c.id AS cid, t.id AS tid, c.name AS cname, t.name AS tname FROM team_competition AS tc INNER JOIN team AS t ON tc.team_id = t.id INNER JOIN competition AS c ON tc.competition_id = c.id WHERE t.id != 1;');
 
     $inscriptions = [];
 

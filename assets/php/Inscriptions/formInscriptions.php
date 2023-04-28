@@ -1,4 +1,7 @@
 <form action='./pageInscriptions.php' method="POST">
+    <div class="titre">
+        <label for="ADD">ADD</label>
+    </div>
     <div class="input-container">
         <label for="team_id">Team</label>
         <select name="team_id" id="team_id">
