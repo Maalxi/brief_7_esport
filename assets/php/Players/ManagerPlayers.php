@@ -10,7 +10,6 @@ class Player
     private $game_id;
     private $tname;
     private $gname;
-    private $player_id;
  
     public function getId()
     {
@@ -90,16 +89,6 @@ class Player
     {
         $this->tname = $tname;
     }
-    public function getPlayerId()
-    {
-        return $this->player_id;
-    }
-
-    public function setPlayerId($player_id)
-    {
-        $this->player_id = $player_id;
-    }
-
 }
 require_once ('../DBManager.php');
 class ManagerPlayers extends DBManager
@@ -119,7 +108,7 @@ class ManagerPlayers extends DBManager
             $newPlayer->setGameName($player['gname']);
             $newPlayer->setTeamId($player['tid']);
             $newPlayer->setGameId($player['gid']);
-            $newPlayer->setPlayerId($player['pid']);
+            $newPlayer->setId($player['pid']);
 
             $players[] = $newPlayer;
 
@@ -134,7 +123,7 @@ class ManagerPlayers extends DBManager
 
         if ($foundPlayer) {
             $player = new Player();
-            $player->setPlayerId($foundPlayer['id']);
+            $player->setId($foundPlayer['id']);
 
             return $player;
         } else {
