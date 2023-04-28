@@ -66,6 +66,21 @@ class ManagerGames extends DBManager
         }
         return $games; 
     }
+    public function findById($id)
+    {
+        $request = 'SELECT * FROM game where id =' . $id;
+        $query = $this->getConnexion()->query($request);
+        $foundGame = $query->fetch();
+
+        if ($foundGame) {
+            $game = new Game();
+            $game->setId($foundGame['id']);
+
+            return $game;
+        } else {
+            return null;
+        }
+    }
 
     public function create($game) {
         $request = 'INSERT INTO game (name, station, format) VALUE (?,?,?)';
@@ -85,4 +100,17 @@ class ManagerGames extends DBManager
         header('Location: pageGames.php');
         exit();
       }
+    public function delete($id)
+    {
+        $teamToDelete = $this->findById($id);
+
+        if ($teamToDelete) {
+            $request = 'DELETE FROM game WHERE id =' . $id . ';';
+            $query = $this->getConnexion()->prepare($request);
+            $query->execute();
+
+            header('Location: pageGames.php');
+            exit();
+        }
+    }
 }

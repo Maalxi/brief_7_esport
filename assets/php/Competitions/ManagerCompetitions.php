@@ -75,6 +75,21 @@ class ManagerCompetitions extends DBManager {
     }
     return $competitions;
   }
+  public function findById($id)
+  {
+      $request = 'SELECT * FROM competition where id =' . $id;
+      $query = $this->getConnexion()->query($request);
+      $foundCompetition = $query->fetch();
+
+      if ($foundCompetition) {
+          $competition = new Competition();
+          $competition->setId($foundCompetition['id']);
+
+          return $competition;
+      } else {
+          return null;
+      }
+  }
   public function create($competition) {
     $request = 'INSERT INTO competition (name, description, city, format, cash_prize) VALUE (?,?,?,?,?)';
     $query = $this->getConnexion()->prepare($request);
@@ -94,6 +109,17 @@ public function edit ($competition){
     header('Location: pageCompetitions.php');
     exit();
   }
-}
+public function delete($id)
+{
+    $teamToDelete = $this->findById($id);
 
-?>
+    if ($teamToDelete) {
+        $request = 'DELETE FROM competition WHERE id =' . $id . ';';
+        $query = $this->getConnexion()->prepare($request);
+        $query->execute();
+
+        header('Location: pageCompetitions.php');
+        exit();
+    }
+}
+}

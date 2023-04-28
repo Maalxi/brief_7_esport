@@ -4,13 +4,16 @@
     <td>Name</td>
     <td>Description</td>
   </tr>
-  <?php 
+  <?php
   foreach ($allTeams as $team) {
+    $removeUrl = 'delete=' . $team->getId();
+    $removeLink = '<a href="./pageTeams.php?' . $removeUrl . '"><img class="button-delete" src="../../img/Capture_decran_du_2023-04-27_13-31-15.png" alt=""></a>';
+
     echo ('<tr>');
-    echo ('<td> <button class="button-delete"></button></td>');
+    echo ('<td>' . $removeLink . '</td>');
     echo ('<td>' . $team->getName() . '</td>');
     echo ('<td>' . $team->getDescription() . '</td>');
     echo ('</tr>');
-  } 
+  }
   ?>
 </table>

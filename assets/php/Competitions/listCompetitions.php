@@ -9,8 +9,11 @@
   </tr>
   <?php 
   foreach ($allCompetitions as $competition) {
+    $removeUrl = 'delete=' . $competition->getId();
+    $removeLink = '<a href="./pageCompetitions.php?' . $removeUrl . '"><img class="button-delete" src="../../img/Capture_decran_du_2023-04-27_13-31-15.png" alt=""></a>';
+
     echo ('<tr>');
-    echo ('<td> <button class="button-delete"></button></td>');
+    echo ('<td>' . $removeLink . '</td>');
     echo ('<td>' . $competition->getName() . '</td>');
     echo ('<td>' . $competition->getDescription() . '</td>');
     echo ('<td>' . $competition->getCity() . '</td>');

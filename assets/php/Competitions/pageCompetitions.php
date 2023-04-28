@@ -1,6 +1,11 @@
 <?php
 require("./ManagerCompetitions.php");
 $managerCompetition = new ManagerCompetitions();
+
+if (isset($_GET['delete'])) {
+  $managerCompetition->delete($_GET['delete']);
+}
+
 $allCompetitions = $managerCompetition->getAllCompetitions();
 
 if (!empty($_POST['name']) && isset($_POST['description']) && isset($_POST['city']) && isset($_POST['format']) && isset($_POST['cash_prize'])) {

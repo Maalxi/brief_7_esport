@@ -8,10 +8,10 @@
     <?php
     foreach ($allSponsors as $sponsor) {
         $removeUrl = 'delete=' . $sponsor->getId();
-        $removeLink = '<a href="./pageSponsors.php?' . $removeUrl . '">Supprimer</a>';
+        $removeLink = '<a href="./pageSponsors.php?' . $removeUrl . '"><img class="button-delete" src="../../img/Capture_decran_du_2023-04-27_13-31-15.png" alt=""></a>';
 
         echo ('<tr>');
-        echo ('<td class="button-delete">' . $removeLink . '</td>');
+        echo ('<td>' . $removeLink . '</td>');
         echo ('<td>' . $sponsor->getName() . '</td>');
         echo ('<td>' . $sponsor->getTeamName() . '</td>');
         echo ('</tr>');

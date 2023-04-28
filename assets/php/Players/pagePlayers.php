@@ -3,12 +3,15 @@ require("../Teams/ManagerTeams.php");
 require("../Games/ManagerGames.php");
 require("./ManagerPlayers.php");
 $managerPlayer = new ManagerPlayers();
-$allPlayers = $managerPlayer->getAll();
-
 $managerTeam = new ManagerTeams();
-$allTeams = $managerTeam->getAllTeams();
-
 $managerGame = new ManagerGames();
+
+if (isset($_GET['delete'])) {
+  $managerPlayer->delete($_GET['delete']);
+}
+
+$allPlayers = $managerPlayer->getAll();
+$allTeams = $managerTeam->getAllTeams();
 $allGames = $managerGame->getAll();
 
 if (!empty($_POST['first_name']) && isset($_POST['second_name']) && isset($_POST['city']) && isset($_POST['team_id']) && isset($_POST['game_id'])) {
