@@ -1,6 +1,11 @@
 <?php
 require("./ManagerGames.php");
 $managerGame = new ManagerGames();
+
+if (isset($_GET['delete'])) {
+  $managerGame->delete($_GET['delete']);
+}
+
 $allGames = $managerGame->getAll();
 
 if (!empty($_POST['name']) && isset($_POST['station']) && isset($_POST['format'])) {

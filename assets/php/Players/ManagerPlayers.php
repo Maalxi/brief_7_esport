@@ -82,12 +82,12 @@ class Player
     }
     public function getPlayerId()
     {
-        return $this->tname;
+        return $this->player_id;
     }
 
     public function setPlayerId($player_id)
     {
-        $this->tname = $player_id;
+        $this->player_id = $player_id;
     }
 
 }
