@@ -43,7 +43,7 @@
 
     <div class="input-container">
         <label for="new_name">New competition</label>
-        <input type="text" name="new_name" id="new_name">
+        <input type="text" name="new_name" id="new_name" value>
     </div>
 
     <div class="input-container">

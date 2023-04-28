@@ -49,7 +49,7 @@ class ManagerSponsors extends DBManager
 {
   public function getAllSponsors()
   {
-    $res = $this->getConnexion()->query('SELECT sponsor.id as sid, sponsor.name AS name, sponsor.team_id AS tid, team.name AS tname FROM sponsor INNER JOIN team ON sponsor.team_id = team.id');
+    $res = $this->getConnexion()->query('SELECT sponsor.id as sid, sponsor.name AS name, sponsor.team_id AS tid, team.name AS tname FROM sponsor INNER JOIN team ON sponsor.team_id = team.id WHERE team.id != 1');
 
     $sponsors = [];
 
