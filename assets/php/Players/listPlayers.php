@@ -9,8 +9,11 @@
     </tr>
     <?php 
         foreach ($allPlayers as $player){
+            $removeUrl = 'delete=' . $player->getPlayerId();
+            $removeLink = '<a href="./pagePlayers.php?' . $removeUrl . '">Supprimer</a>';
+
             echo ('<tr>');
-            echo ('<td> <button class="button-delete"></button></td>');
+            echo ('<td class="button-delete">' . $removeLink . '</td>');
             echo ('<td>'. $player->getFirstName(). '</td>');
             echo ('<td>'. $player->getSecondName(). '</td>');
             echo ('<td>'. $player->getCity(). '</td>');

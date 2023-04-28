@@ -9,6 +9,7 @@ class Player
     private $game_id;
     private $tname;
     private $gname;
+    private $player_id;
  
     public function getFirstName()
     {
@@ -79,6 +80,15 @@ class Player
     {
         $this->tname = $tname;
     }
+    public function getPlayerId()
+    {
+        return $this->tname;
+    }
+
+    public function setPlayerId($player_id)
+    {
+        $this->tname = $player_id;
+    }
 
 }
 require_once ('../DBManager.php');
@@ -86,7 +96,7 @@ class ManagerPlayers extends DBManager
 {
     public function getAll()
     {
-        $res = $this->getConnexion()->query('SELECT player.first_name, player.second_name, player.city, player.team_id AS tid, player.game_id AS gid, team.name AS tname, game.name AS gname FROM player, team, game WHERE player.game_id = game.id AND player.team_id = team.id ORDER BY tid;
+        $res = $this->getConnexion()->query('SELECT player.id as pid, player.first_name, player.second_name, player.city, player.team_id AS tid, player.game_id AS gid, team.name AS tname, game.name AS gname FROM player, team, game WHERE player.game_id = game.id AND player.team_id = team.id ORDER BY tid;
         ');
         $players = [];
 
@@ -99,11 +109,27 @@ class ManagerPlayers extends DBManager
             $newPlayer->setGameName($player['gname']);
             $newPlayer->setTeamId($player['tid']);
             $newPlayer->setGameId($player['gid']);
+            $newPlayer->setPlayerId($player['pid']);
 
             $players[] = $newPlayer;
 
         }
         return $players; 
+    }
+    public function findById($player_id)
+    {
+        $request = 'SELECT * FROM player where id =' . $player_id;
+        $query = $this->getConnexion()->query($request);
+        $foundPlayer = $query->fetch();
+
+        if ($foundPlayer) {
+            $player = new Player();
+            $player->setPlayerId($foundPlayer['id']);
+
+            return $player;
+        } else {
+            return null;
+        }
     }
 
     public function create($player) {
@@ -115,7 +141,19 @@ class ManagerPlayers extends DBManager
         header('Location:pagePlayers.php');
         return true;
     }
+    public function delete($player_id)
+    {
+        $teamToDelete = $this->findById($player_id);
+
+        if ($teamToDelete) {
+            $request = 'DELETE FROM player WHERE id =' . $player_id . ';' . 'UPDATE team SET team_id = 1
+            WHERE ISNULL(team_id) = 1; UPDATE game SET game_id = 1 WHERE ISNULL(game_id) = 1;';
+            $query = $this->getConnexion()->prepare($request);
+            $query->execute();
+
+            header('Location: pagePlayers.php');
+            exit();
+        }
+    }
 }
-
-
 ?>

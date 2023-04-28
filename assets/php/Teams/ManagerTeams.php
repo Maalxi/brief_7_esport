@@ -88,7 +88,8 @@ class ManagerTeams extends DBManager
         $teamToDelete = $this->findById($teamid);
 
         if ($teamToDelete) {
-            $request = 'DELETE FROM team WHERE id =' . $teamid;
+            $request = 'DELETE FROM team WHERE id =' . $teamid . ';' . 'UPDATE player SET team_id = 1
+            WHERE ISNULL(team_id) = 1; UPDATE sponsor SET team_id = 1 WHERE ISNULL(team_id) = 1; UPDATE team_competition SET team_id = 1 WHERE ISNULL(team_id) = 1;';
             $query = $this->getConnexion()->prepare($request);
             $query->execute();
 

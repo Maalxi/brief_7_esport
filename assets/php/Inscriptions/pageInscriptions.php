@@ -4,13 +4,19 @@ require("../Competitions/ManagerCompetitions.php");
 require("./ManagerInscriptions.php");
 
 $managerInscription = new ManagerInscriptions();
-$allInscriptions= $managerInscription->getAllInscriptions();
-
 $managerTeam = new ManagerTeams();
-$allTeams = $managerTeam->getAllTeams();
-
 $managerCompetition = new ManagerCompetitions();
+
+
+if (isset($_GET['delete']) && isset($_GET['competition'])) {
+  $managerInscription->delete($_GET['delete'],$_GET['competition']);
+}
+
+$allInscriptions= $managerInscription->getAllInscriptions();
+$allTeams = $managerTeam->getAllTeams();
 $allCompetitions = $managerCompetition->getAllCompetitions();
+
+
 
 if (!empty($_POST['team_id']) && isset($_POST['competition_id'])) {
   $newInscription = new Inscriptions();

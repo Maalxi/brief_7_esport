@@ -6,7 +6,7 @@ class Inscriptions
   private $tname;
   private $cname;
 
-  
+
   public function getCompetitionId()
   {
     return $this->competition_id;
@@ -63,10 +63,26 @@ class ManagerInscriptions extends DBManager
       $newInscription->setTeamId($inscription['tid']);
       $newInscription->setCompetitionName($inscription['cname']);
       $newInscription->setTeamName($inscription['tname']);
-      
+
       $inscriptions[] = $newInscription;
     }
     return $inscriptions;
+  }
+  public function findById($teamid, $competitionid)
+  {
+    $request = 'DELETE FROM team_competition WHERE team_id =' . $teamid . ' AND competition_id =' . $competitionid . ';';
+    $query = $this->getConnexion()->query($request);
+    $foundInscription = $query->fetch();
+
+    if ($foundInscription) {
+      $inscription = new Inscriptions();
+      $inscription->setTeamId($foundInscription['team_id']);
+      $inscription->setCompetitionId($foundInscription['competition_id']);
+
+      return $inscription;
+    } else {
+      return null;
+    }
   }
 
   public function create($inscription)
@@ -76,7 +92,20 @@ class ManagerInscriptions extends DBManager
     $query->execute([
       $inscription->getTeamId(), $inscription->getCompetitionId()
     ]);
-    header('Location:pageInscriptions.php');
+    header('Location: pageInscriptions.php');
     return true;
+  }
+  public function delete($teamid, $competitionid)
+  {
+    $teamToDelete = $this->findById($teamid, $competitionid);
+
+    if ($teamToDelete) {
+      $request = 'DELETE FROM team_competition WHERE team_id =' . $teamid . 'AND competition_id =' . $competitionid . ';';
+      $query = $this->getConnexion()->prepare($request);
+      $query->execute();
+
+      header('Location: pageInscriptions.php');
+      exit();
+    }
   }
 }

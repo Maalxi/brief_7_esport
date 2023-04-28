@@ -2,11 +2,13 @@
 require("./ManagerTeams.php");
 
 $managerTeam = new ManagerTeams();
-$allTeams = $managerTeam->getAllTeams();
 
 if (isset($_GET['delete'])) {
   $managerTeam->delete($_GET['delete']);
 }
+
+$allTeams = $managerTeam->getAllTeams();
+
 
 if (!empty($_POST['name']) && isset($_POST['description'])) {
   $newTeam = new Team();
