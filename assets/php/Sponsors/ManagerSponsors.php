@@ -103,4 +103,14 @@ class ManagerSponsors extends DBManager
       exit();
     }
   }
+
+  public function edit ($sponsor){
+    $request = 'UPDATE sponsor SET name = ?, team_id = ? WHERE id = ?';
+    $query = $this->getConnexion()->prepare($request);
+    $query->execute([
+      $sponsor->getName(), $sponsor->getTeamId(), $sponsor->getId()
+    ]);
+    header('Location: pageSponsors.php');
+    exit();
+  }
 }

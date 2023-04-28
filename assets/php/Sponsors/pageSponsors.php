@@ -3,14 +3,15 @@ require("../Teams/ManagerTeams.php");
 require("./ManagerSponsors.php");
 
 $ManagerSponsor = new ManagerSponsors();
-$allSponsors = $ManagerSponsor->getAllSponsors();
-
 $managerTeam = new ManagerTeams();
-$allTeams = $managerTeam->getAllTeams();
 
 if (isset($_GET['delete'])) {
   $ManagerSponsor->delete($_GET['delete']);
 }
+
+$allTeams = $managerTeam->getAllTeams();
+$allSponsors = $ManagerSponsor->getAllSponsors();
+
 
 if (!empty($_POST['name']) && isset($_POST['team_id'])) {
   $newSponsor = new sponsor();
@@ -19,6 +20,17 @@ if (!empty($_POST['name']) && isset($_POST['team_id'])) {
 
   $ManagerSponsor->create($newSponsor);
 }
+
+if (!empty($_POST['new_id']) && isset($_POST['new_name']) && isset($_POST['new_team_id'])){
+  $upSponsor = new sponsor();
+  $upSponsor->setId($_POST['new_id']);
+  $upSponsor->setName($_POST['new_name']);
+  $upSponsor->setTeamId(intval($_POST['new_team_id']));
+
+  $ManagerSponsor->edit($upSponsor);
+}
+
+
 ?>
 
 <!DOCTYPE html>
