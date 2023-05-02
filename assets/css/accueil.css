@@ -1,5 +1,4 @@
 
-
 a {
     padding: 10px 20px;
     border-radius: 5px;
@@ -14,6 +13,8 @@ a {
     background-color: red;
   }
   
+ 
+
 body {
   display: flex;
   flex-direction: row;
@@ -29,3 +30,11 @@ body {
         flex-direction: column;
     }
 }
+.img_accueil{
+width: 100px;
+height: 100px;
+}
+
+
+ 
+
