@@ -1,16 +1,20 @@
 ### Brief_7_esport
 
-
 Groupe : David, Leo, Samuel
 
 ## Installer le projet
 
-Installer php 
-<!-- ```bash
-sudo apt install php
-``` -->
-/
-/
+- git clone git@github.com:Maalxi/brief_7_esport.git ( prérequis : Installer php, apache2 et Mysql)
+
+- Placer le fichier Brief_7_Esport dans public_html (Il ce trouve a la racine 'cd ~')
+
+- Modifier le fichier DBManager.php avec vos informations :
+
+ 'mysql:host=localhost;dbname=<NomDeLaBdd>;charset=utf8',
+ 'VotreNomDutilisateur', // (le plus fréquent : 'root')
+ 'VotreMotDePasse'
+
+- 
 
 #
 
@@ -35,7 +39,3 @@ L’application s’articule autour de pages d’administration, sur chaque page
 ​
 
 Appuyez-vous sur le MPD précédemment réalisé et créez une page d’administration pour chacune des entités.
-
-​
-
-Bonus : Créer un formulaire d’authentification pour accéder à l’application
