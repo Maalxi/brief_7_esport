@@ -10,23 +10,17 @@
 </head>
 
 <body>
-  <a href="./assets/php/Games/pageGames.php">
-    <img src="./assets/img/GAME.jpeg" class="img_accueil" alt="games">
+  <a href="./assets/php/Games/pageGames.php">Games
   </a>
-  <a href="./assets/php/Sponsors/pageSponsors.php">
-  <img src="./assets/img/sponsor-rubber-stamp-grunge-seal-260nw-1462113815.webp" class="img_accueil" alt="sponsors">
+  <a href="./assets/php/Sponsors/pageSponsors.php">Sponsors
   </a>
-  <a href="./assets/php/Teams/pageTeams.php">
-  <img src="./assets/img/logo_team_leonardo.ia.jpeg" class="img_accueil" alt="team">
+  <a href="./assets/php/Teams/pageTeams.php">Teams
   </a>
-  <a href="./assets/php/Players/pagePlayers.php">
-  <img src="./assets/img/images.jpeg" class="img_accueil" alt="player">
+  <a href="./assets/php/Players/pagePlayers.php">Players
   </a>
-  <a href="./assets/php/Competitions/pageCompetitions.php">
-  <img src="./assets/img/competition.png" class="img_accueil" alt="competes">
+  <a href="./assets/php/Competitions/pageCompetitions.php">Competitions
   </a>
-  <a href="./assets/php/Inscriptions/pageInscriptions.php">
-  <img src="./assets/img/inscription.jpeg" class="img_accueil" alt="inscriptions">
+  <a href="./assets/php/Inscriptions/pageInscriptions.php">Inscriptions
   </a>
 </body>
 

@@ -6,7 +6,7 @@ Groupe : David, Leo, Samuel
 
 - git clone git@github.com:Maalxi/brief_7_esport.git ( prérequis : Installer php, apache2 et Mysql)
 
-- Placer le fichier Brief_7_Esport dans public_html (Il ce trouve a la racine 'cd ~')
+- Placer le fichier Brief_7_Esport dans public_html (Il se trouve à la racine 'cd ~')
 
 - Modifier le fichier DBManager.php avec vos informations :
 
@@ -14,7 +14,7 @@ Groupe : David, Leo, Samuel
  'VotreNomDutilisateur', // (le plus fréquent : 'root')
  'VotreMotDePasse'
 
-- 
+- Lancer votre navigateur et entrer cette adresse (en modifiant le nom de l'utilisateur par le vôtre) : 'http://localhost/~NomDutilisateur/brief_7_esport/'
 
 #
 
